@@ -16,14 +16,14 @@ public class Table extends Thread {
 
     @Override
     public void run() {
-        System.out.println("Заседание макаронных мудрецов объявляется открытым");
+        System.out.println("Безмолвные философы сели за стол");
         try {
             thinkingProcess();
             cdl.await();
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
-        System.out.println("Все философы накушались");
+        System.out.println("Все философы поели 3 раза");
     }
 
     public synchronized boolean tryGetForks(int leftFork, int rightFork) {
@@ -46,7 +46,7 @@ public class Table extends Thread {
         }
 
         for (int i = 0; i < PHILOSOPHER_COUNT; i++) {
-            philosophers[i] = new Philosopher("Philosopher №" + i, this,
+            philosophers[i] = new Philosopher("Философ №" + i, this,
                     i, (i + 1) % PHILOSOPHER_COUNT, cdl);
         }
     }

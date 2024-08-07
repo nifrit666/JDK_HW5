@@ -32,17 +32,17 @@ public class Philosopher extends Thread {
             }
         }
 
-        System.out.println(name + " наелся до отвала");
+        System.out.println(name + " поел");
         cdl.countDown();
     }
 
     private void eating() throws InterruptedException {
         if (table.tryGetForks(leftFork, rightFork)) {
-            System.out.println(name + " уплетает вермишель, используя вилки: " + leftFork
+            System.out.println(name + " ест спагетти, используя вилки: " + leftFork
                     + " и " + rightFork);
             sleep(random.nextLong(3000, 6000));
             table.putForks(leftFork, rightFork);
-            System.out.println(name + " покушал, можно и помыслить. " +
+            System.out.println(name + " поел и размышляет. " +
                     "Не забыв при этом вернуть вилки " + leftFork + " и " + rightFork);
             countEat++;
         }
